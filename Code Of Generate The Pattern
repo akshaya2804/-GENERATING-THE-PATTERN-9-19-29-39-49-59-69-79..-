@@ -1,0 +1,25 @@
+class pattern_generator;  
+    int value;  
+function new();  
+        value = 9;   
+    endfunction  
+ task generate_next();  
+        if (value <= 59) begin  
+           $write(" %0d", value);  
+          value += 10;   
+        end else begin  
+            $display("End of sequence");  
+        end  
+    endtask  
+endclass  
+  
+module tb_pattern_generator;  
+ pattern_generator pg;  
+initial begin  
+    pg = new();  
+repeat (6) begin  
+            pg.generate_next();   
+        end  
+$finish;   
+    end  
+endmodule 
